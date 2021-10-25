@@ -4,8 +4,6 @@ import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:tedx_app/constants.dart';
 import 'package:tedx_app/screens/EventsPage.dart';
 import 'package:tedx_app/screens/HomePage.dart';
-import 'package:tedx_app/screens/LoginPage.dart';
-import 'package:tedx_app/screens/Signup.dart';
 import 'package:tedx_app/screens/SpeakersPage.dart';
 
 List<Widget> _buildScreens() {
@@ -17,13 +15,13 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
     PersistentBottomNavBarItem(
       icon: Icon(CupertinoIcons.home),
       title: ("Home"),
-      activeColorPrimary: CupertinoColors.activeBlue,
+      activeColorPrimary: kRed,
       inactiveColorPrimary: CupertinoColors.systemGrey,
     ),
     PersistentBottomNavBarItem(
       icon: Icon(CupertinoIcons.person_2),
       title: ("Speakers"),
-      activeColorPrimary: CupertinoColors.activeBlue,
+      activeColorPrimary: kRed,
       inactiveColorPrimary: CupertinoColors.systemGrey,
     ),
     PersistentBottomNavBarItem(
@@ -31,7 +29,7 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
         CupertinoIcons.calendar_circle,
       ),
       title: ("Settings"),
-      activeColorPrimary: CupertinoColors.activeBlue,
+      activeColorPrimary: kRed,
       inactiveColorPrimary: CupertinoColors.systemGrey,
     )
   ];
@@ -49,7 +47,7 @@ class TabView extends StatelessWidget {
       screens: _buildScreens(),
       items: _navBarsItems(),
       confineInSafeArea: true,
-      backgroundColor: kGrey.withOpacity(0.5), // Default is Colors.white.
+      backgroundColor: kGrey, // Default is Colors.white.
       handleAndroidBackButtonPress: true, // Default is true.
       resizeToAvoidBottomInset:
           true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
@@ -58,7 +56,6 @@ class TabView extends StatelessWidget {
           true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
       decoration: NavBarDecoration(
         borderRadius: BorderRadius.circular(10.0),
-        colorBehindNavBar: Colors.white,
       ),
       popAllScreensOnTapOfSelectedTab: true,
       popActionScreens: PopActionScreensType.all,
