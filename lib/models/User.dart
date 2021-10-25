@@ -12,3 +12,8 @@ class User {
       required this.phoneNo,
       this.profilePicLink});
 }
+
+User kUser = User(
+    name: "Harsh Kulkarni",
+    email: "harsh.kulkarni.42774@gmail.com",
+    phoneNo: 8888888888);
