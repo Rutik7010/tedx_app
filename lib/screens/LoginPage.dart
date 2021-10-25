@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:tedx_app/constants.dart';
 import 'package:tedx_app/screens/Signup.dart';
+import 'package:tedx_app/screens/TabView.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -24,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 9, sigmaY: 9),
               child: Container(
-                color: kGrey.withOpacity(0.1),
+                color: Colors.black.withOpacity(0.5),
                 alignment: Alignment.center,
               ),
             ),
@@ -53,21 +54,28 @@ class _LoginPageState extends State<LoginPage> {
                   keyboardType: TextInputType.emailAddress,
                 ),
                 Spacer(),
-                Container(
-                  decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(size.height * 0.08)),
-                  height: size.height * 0.08,
-                  width: size.width * 0.4,
-                  child: Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: FittedBox(
-                      fit: BoxFit.contain,
-                      child: Text(
-                        "LOGIN",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
+                GestureDetector(
+                  onTap: () => Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => TabView()),
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: kRed,
+                        borderRadius:
+                            BorderRadius.circular(size.height * 0.08)),
+                    height: size.height * 0.08,
+                    width: size.width * 0.8,
+                    child: Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: FittedBox(
+                        fit: BoxFit.contain,
+                        child: Text(
+                          "Login",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),

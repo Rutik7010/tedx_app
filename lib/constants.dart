@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+Color kRed = Color.fromRGBO(255, 0, 0, 1);
 Color kGrey = Colors.black87;
 MaterialColor kMaterialColor = MaterialColor(0xFFFF0000, {
   50: Color(0xFFFFF3F3),
