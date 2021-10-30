@@ -72,26 +72,64 @@ class _HomePageState extends State<HomePage> {
             SliverList(
                 delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(
+              return Container(
+                margin: EdgeInsets.symmetric(
+                  vertical: 15,
+                  horizontal: 15,
+                ),
+                padding: EdgeInsets.symmetric(
                   vertical: 15,
                   horizontal: 35,
                 ),
-                child: Container(
-                  height: 120,
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade800,
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Container(),
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade800,
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(100),
+                      child: CachedNetworkImage(
+                        height: 100,
+                        width: 100,
+                        imageUrl: kUpcomingEventslist[index].bannerLink,
+                        progressIndicatorBuilder: (BuildContext context,
+                                String s, DownloadProgress d) =>
+                            CircularProgressIndicator(),
+                        errorWidget:
+                            (BuildContext context, String s, dynamic q) =>
+                                Icon(Icons.error),
+                        fit: BoxFit.cover,
                       ),
-                    ],
-                  ),
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          kUpcomingEventslist[index].eventName,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'Poppins',
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          kUpcomingEventslist[index].speaker.name,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'Poppins',
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
                 ),
               );
             }, childCount: 5))
