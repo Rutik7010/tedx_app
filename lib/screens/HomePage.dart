@@ -3,8 +3,11 @@ import 'dart:math';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:tedx_app/constants.dart';
+import 'package:tedx_app/screens/EventsInfoPage.dart';
 import 'package:tedx_app/staticData.dart';
+import 'package:tedx_app/widgets/EventBox.dart';
 import 'package:tedx_app/widgets/PageViewTile.dart';
+import 'package:tedx_app/widgets/SliverAppBar.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -19,16 +22,7 @@ class _HomePageState extends State<HomePage> {
         color: kGrey,
         child: CustomScrollView(
           slivers: [
-            SliverAppBar(
-              title: Text(
-                "Edx App",
-                style: TextStyle(
-                    fontFamily: 'Poppins', fontWeight: FontWeight.w900),
-              ),
-              floating: true,
-              pinned: false,
-              backgroundColor: kGrey.withOpacity(0.5),
-            ),
+            SAppBar(title: "Edx App"),
             SliverToBoxAdapter(
               child: Container(
                 color: Colors.grey.shade800,
@@ -60,79 +54,26 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.all(16.0),
                 child: Text(
                   "Upcoming Events",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w700,
-                  ),
+                  style: kHeadingStyle,
                 ),
               ),
             ),
             SliverList(
                 delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
-              return Container(
-                margin: EdgeInsets.symmetric(
-                  vertical: 15,
-                  horizontal: 15,
+              return GestureDetector(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          EventsInfoPage(event: kUpcomingEventslist[index])),
                 ),
-                padding: EdgeInsets.symmetric(
-                  vertical: 15,
-                  horizontal: 35,
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade800,
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(100),
-                      child: CachedNetworkImage(
-                        height: 100,
-                        width: 100,
-                        imageUrl: kUpcomingEventslist[index].bannerLink,
-                        progressIndicatorBuilder: (BuildContext context,
-                                String s, DownloadProgress d) =>
-                            CircularProgressIndicator(),
-                        errorWidget:
-                            (BuildContext context, String s, dynamic q) =>
-                                Icon(Icons.error),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    Column(
-                      children: [
-                        Text(
-                          kUpcomingEventslist[index].eventName,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'Poppins',
-                            fontSize: 20,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          kUpcomingEventslist[index].speaker.name,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'Poppins',
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
+                child: EventBox(
+                    imageUrl: kUpcomingEventslist[index].bannerLink,
+                    eventName: kUpcomingEventslist[index].eventName,
+                    speakerName: kUpcomingEventslist[index].speaker.name),
               );
-            }, childCount: 5))
+            }, childCount: kUpcomingEventslist.length)),
           ],
         ),
       ),

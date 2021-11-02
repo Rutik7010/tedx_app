@@ -45,3 +45,15 @@ InputDecoration getInputDecoration(
       ),
       suffixIcon: icon,
     );
+
+TextStyle kHeadingStyle = TextStyle(
+  color: Colors.white,
+  fontSize: 25,
+  fontFamily: 'Poppins',
+  fontWeight: FontWeight.w700,
+);
+TextStyle kSubheadingStyle = TextStyle(
+  color: Colors.grey,
+  fontSize: 15,
+  fontFamily: 'Poppins',
+);

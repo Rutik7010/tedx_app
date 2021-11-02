@@ -6,8 +6,10 @@ class Event {
   final Speaker speaker;
   final String formLink;
   final String bannerLink;
+  final String eventInfo;
   Event(
-      {required this.formLink,
+      {required this.eventInfo,
+      required this.formLink,
       required this.bannerLink,
       required this.eventName,
       required this.dateTime,
