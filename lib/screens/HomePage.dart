@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
         color: kGrey,
         child: CustomScrollView(
           slivers: [
-            SAppBar(title: "Edx App"),
+            SAppBar(title: "Tedx App"),
             SliverToBoxAdapter(
               child: Container(
                 color: Colors.grey.shade800,
@@ -69,9 +69,8 @@ class _HomePageState extends State<HomePage> {
                           EventsInfoPage(event: kUpcomingEventslist[index])),
                 ),
                 child: EventBox(
-                    imageUrl: kUpcomingEventslist[index].bannerLink,
-                    eventName: kUpcomingEventslist[index].eventName,
-                    speakerName: kUpcomingEventslist[index].speaker.name),
+                  event: kUpcomingEventslist[index],
+                ),
               );
             }, childCount: kUpcomingEventslist.length)),
           ],

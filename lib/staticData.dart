@@ -110,3 +110,32 @@ User kUser = User(
     name: "Harsh Kulkarni",
     email: "harsh.kulkarni.42774@gmail.com",
     phoneNo: 8888888888);
+
+List<Speaker> kSpeakersList = [
+  Speaker(
+      designation: "Scientist",
+      name: "Donald Trump",
+      info:
+          "Born and raised in Queens, New York City, Trump graduated from the Wharton School of the University of Pennsylvania with a bachelor's degree in 1968. He became the president of his father Fred Trump's real estate business in 1971 and renamed it The Trump Organization. Trump expanded the company's operations to building and renovating skyscrapers, hotels, casinos, and golf courses. He later started various side ventures, mostly by licensing his name. Trump and his businesses have been involved in more than 4,000 state and federal legal actions, including six bankruptcies. He owned the Miss Universe brand of beauty pageants from 1996 to 2015. From 2004 to 2015, he co-produced and hosted the reality television series The Apprentice.",
+      imageUrl: "https://source.unsplash.com/user/c_v_r/1900x800"),
+  Speaker(
+      designation: "Scientist",
+      name: "Elon Musk",
+      info:
+          "Born and raised in Queens, New York City, Trump graduated from the Wharton School of the University of Pennsylvania with a bachelor's degree in 1968. He became the president of his father Fred Trump's real estate business in 1971 and renamed it The Trump Organization. Trump expanded the company's operations to building and renovating skyscrapers, hotels, casinos, and golf courses. He later started various side ventures, mostly by licensing his name. Trump and his businesses have been involved in more than 4,000 state and federal legal actions, including six bankruptcies. He owned the Miss Universe brand of beauty pageants from 1996 to 2015. From 2004 to 2015, he co-produced and hosted the reality television series The Apprentice.",
+      imageUrl: "https://source.unsplash.com/user/c_v_r/1900x800"),
+  Speaker(
+      designation: "Politician",
+      name: "Joe Biden",
+      info:
+          "President Biden represented Delaware for 36 years in the U.S. Senate before becoming the 47th Vice President of the United States. As President, Biden will restore America’s leadership and build our communities back better.",
+      imageUrl: "https://source.unsplash.com/user/c_v_r/1900x800"),
+  Speaker(
+      designation: "Comedian",
+      name: "Bill Maher",
+      info:
+          "William Maher is an American comedian, actor, political commentator, and television host. He is known for the HBO political talk show Real Time with Bill Maher and the similar late-night show called Politically Incorrect, originally on Comedy Central and later on ABC.",
+      imageUrl: "https://source.unsplash.com/user/c_v_r/1900x800")
+];
+
+List<Event> kPreviousEvents = List.castFrom(kUpcomingEventslist);

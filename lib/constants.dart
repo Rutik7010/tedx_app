@@ -57,3 +57,6 @@ TextStyle kSubheadingStyle = TextStyle(
   fontSize: 15,
   fontFamily: 'Poppins',
 );
+
+TextStyle kAppBarStyle =
+    TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w900);

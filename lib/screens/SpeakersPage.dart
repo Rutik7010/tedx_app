@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:tedx_app/constants.dart';
+import 'package:tedx_app/screens/SpeakerInfoPage.dart';
 import 'package:tedx_app/staticData.dart';
 import 'package:tedx_app/widgets/SpeakerBox.dart';
 
@@ -43,11 +44,17 @@ class _SpeakersPageState extends State<SpeakersPage> {
             ),
             SliverList(
               delegate: SliverChildBuilderDelegate(
-                  (BuildContext cnt, int index) => SpeakerBox(
-                      speakerName: kUpcomingEventslist[index].speaker.name,
-                      speakerInfo: kUpcomingEventslist[index].speaker.info,
-                      imageUrl: kUpcomingEventslist[index].speaker.imageUrl),
-                  childCount: kUpcomingEventslist.length),
+                  (BuildContext cnt, int index) => GestureDetector(
+                        onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SpeakerInfoPage(
+                                    speaker: kSpeakersList[index]))),
+                        child: SpeakerBox(
+                          speaker: kSpeakersList[index],
+                        ),
+                      ),
+                  childCount: kSpeakersList.length),
             )
           ],
         ),

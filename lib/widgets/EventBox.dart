@@ -1,19 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:tedx_app/constants.dart';
+import 'package:tedx_app/models/Event.dart';
 import 'package:tedx_app/staticData.dart';
 
 class EventBox extends StatelessWidget {
-  final String imageUrl;
-  final String eventName;
-  final String speakerName;
+  final Event event;
 
-  const EventBox(
-      {Key? key,
-      required this.imageUrl,
-      required this.eventName,
-      required this.speakerName})
-      : super(key: key);
+  const EventBox({Key? key, required this.event}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +43,7 @@ class EventBox extends StatelessWidget {
               child: CachedNetworkImage(
                 height: 100,
                 width: double.infinity,
-                imageUrl: imageUrl,
+                imageUrl: event.bannerLink,
                 fit: BoxFit.cover,
                 progressIndicatorBuilder:
                     (BuildContext cnt, String s, DownloadProgress d) => Center(
@@ -61,7 +55,7 @@ class EventBox extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Text(
-              eventName,
+              event.eventName,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
                   color: Colors.white,
@@ -73,7 +67,7 @@ class EventBox extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
             child: Text(
-              speakerName,
+              event.speaker.name,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 color: Colors.white,

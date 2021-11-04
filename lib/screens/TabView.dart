@@ -28,7 +28,7 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
       icon: Icon(
         CupertinoIcons.calendar_circle,
       ),
-      title: ("Settings"),
+      title: ("Events"),
       activeColorPrimary: kRed,
       inactiveColorPrimary: CupertinoColors.systemGrey,
     )
