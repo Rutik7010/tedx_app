@@ -2,17 +2,17 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:tedx_app/constants.dart';
-import 'package:tedx_app/screens/SignupPage.dart';
+import 'package:tedx_app/screens/LoginPage.dart';
 import 'package:tedx_app/screens/TabView.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class SignupPage extends StatefulWidget {
+  const SignupPage({Key? key}) : super(key: key);
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _SignupPageState createState() => _SignupPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -31,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -41,7 +41,19 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 TextFormField(
                   decoration: getInputDecoration(
-                      hintText: "Enter Email", icon: Icon(Icons.email)),
+                    hintText: "Enter Name",
+                    icon: Icon(Icons.person),
+                  ),
+                  keyboardType: TextInputType.emailAddress,
+                ),
+                SizedBox(
+                  height: size.height * 0.03,
+                ),
+                TextFormField(
+                  decoration: getInputDecoration(
+                    hintText: "Enter Email",
+                    icon: Icon(Icons.email),
+                  ),
                   keyboardType: TextInputType.emailAddress,
                 ),
                 SizedBox(
@@ -50,7 +62,9 @@ class _LoginPageState extends State<LoginPage> {
                 TextFormField(
                   obscureText: true,
                   decoration: getInputDecoration(
-                      hintText: "Enter Password", icon: Icon(Icons.lock)),
+                    hintText: "Enter Password",
+                    icon: Icon(Icons.lock),
+                  ),
                   keyboardType: TextInputType.emailAddress,
                 ),
                 Spacer(),
@@ -71,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: FittedBox(
                         fit: BoxFit.contain,
                         child: Text(
-                          "Login",
+                          "Sign Up",
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -85,19 +99,19 @@ class _LoginPageState extends State<LoginPage> {
                   height: size.height * 0.03,
                 ),
                 GestureDetector(
-                  onTap: () => Navigator.push(
+                  onTap: () => Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => SignupPage()),
+                    MaterialPageRoute(builder: (context) => LoginPage()),
                   ),
                   child: Text.rich(
                     TextSpan(
                       children: [
                         TextSpan(
-                            text: 'New User? ',
+                            text: 'Already Registered? ',
                             style:
                                 TextStyle(color: Colors.white60, fontSize: 20)),
                         TextSpan(
-                          text: 'Sign Up',
+                          text: 'Sign in',
                           style: TextStyle(
                             color: Colors.red,
                             fontSize: 20,

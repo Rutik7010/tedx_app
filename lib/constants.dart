@@ -60,3 +60,18 @@ TextStyle kSubheadingStyle = TextStyle(
 
 TextStyle kAppBarStyle =
     TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w900);
+
+List<String> kMonths = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'June',
+  'July',
+  'Aug',
+  'Sept',
+  'Oct',
+  'Nov',
+  'Dec'
+];

@@ -1,9 +1,6 @@
-import 'dart:math';
-
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:tedx_app/constants.dart';
-import 'package:tedx_app/screens/EventsInfoPage.dart';
+import 'package:tedx_app/screens/EventInfoPage.dart';
 import 'package:tedx_app/staticData.dart';
 import 'package:tedx_app/widgets/EventBox.dart';
 import 'package:tedx_app/widgets/PageViewTile.dart';
@@ -22,7 +19,7 @@ class _HomePageState extends State<HomePage> {
         color: kGrey,
         child: CustomScrollView(
           slivers: [
-            SAppBar(title: "Tedx App"),
+            SAppBar(title: "Tedx RAIT"),
             SliverToBoxAdapter(
               child: Container(
                 color: Colors.grey.shade800,
@@ -59,20 +56,21 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             SliverList(
-                delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-              return GestureDetector(
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          EventsInfoPage(event: kUpcomingEventslist[index])),
-                ),
-                child: EventBox(
-                  event: kUpcomingEventslist[index],
-                ),
-              );
-            }, childCount: kUpcomingEventslist.length)),
+              delegate:
+                  SliverChildBuilderDelegate((BuildContext context, int index) {
+                return GestureDetector(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            EventsInfoPage(event: kUpcomingEventslist[index])),
+                  ),
+                  child: EventBox(
+                    event: kUpcomingEventslist[index],
+                  ),
+                );
+              }, childCount: kUpcomingEventslist.length),
+            ),
           ],
         ),
       ),

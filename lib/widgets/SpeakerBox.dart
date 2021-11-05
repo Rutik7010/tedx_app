@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:tedx_app/constants.dart';
 import 'package:tedx_app/models/Speaker.dart';
-import 'package:tedx_app/screens/SpeakerInfoPage.dart';
 
 class SpeakerBox extends StatelessWidget {
   final Speaker speaker;
@@ -54,7 +53,7 @@ class SpeakerBox extends StatelessWidget {
                   style: kHeadingStyle.copyWith(fontSize: 22),
                 ),
                 Text(
-                  speaker.designation,
+                  speaker.profession,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: kSubheadingStyle,

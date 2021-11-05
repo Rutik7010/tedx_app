@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:tedx_app/constants.dart';
 import 'package:tedx_app/models/Event.dart';
 import 'package:tedx_app/screens/SpeakerInfoPage.dart';
-import 'package:tedx_app/widgets/PageViewTile.dart';
+import 'package:tedx_app/widgets/SliverAppBar.dart';
 
 class EventsInfoPage extends StatefulWidget {
   final Event event;
@@ -24,16 +24,7 @@ class _EventsInfoPageState extends State<EventsInfoPage> {
             color: kGrey,
             child: CustomScrollView(
               slivers: [
-                SliverAppBar(
-                  title: Text(
-                    widget.event.eventName,
-                    overflow: TextOverflow.ellipsis,
-                    style: kAppBarStyle,
-                  ),
-                  floating: true,
-                  pinned: false,
-                  backgroundColor: kGrey.withOpacity(0.5),
-                ),
+                SAppBar(title: widget.event.eventName),
                 SliverToBoxAdapter(
                   child: Container(
                     height: MediaQuery.of(context).size.height / 2.5,
@@ -59,6 +50,16 @@ class _EventsInfoPageState extends State<EventsInfoPage> {
                     delegate: SliverChildListDelegate(
                       [
                         Text(widget.event.eventName, style: kHeadingStyle),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          " ${widget.event.dateTime.day} ${kMonths[widget.event.dateTime.month]} ${widget.event.dateTime.year}  \n ${widget.event.dateTime.hour}:${widget.event.dateTime.minute}",
+                          style: kSubheadingStyle.copyWith(
+                            fontWeight: FontWeight.w700,
+                            color: kRed.withOpacity(0.8),
+                          ),
+                        ),
                         SizedBox(
                           height: 10,
                         ),
@@ -125,8 +126,15 @@ class _EventsInfoPageState extends State<EventsInfoPage> {
                                       style: kSubheadingStyle.copyWith(
                                         fontWeight: FontWeight.w700,
                                         fontSize: 18,
-                                        color: Colors.white,
+                                        color: kRed.withOpacity(0.8),
                                       ),
+                                    ),
+                                    Text(
+                                      widget.event.speaker.profession,
+                                      maxLines: 7,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: kSubheadingStyle.copyWith(
+                                          fontWeight: FontWeight.w600),
                                     ),
                                     Text(
                                       widget.event.speaker.info,
@@ -159,7 +167,7 @@ class _EventsInfoPageState extends State<EventsInfoPage> {
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 margin: EdgeInsets.symmetric(horizontal: 80, vertical: 40),
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
                 decoration: BoxDecoration(
                   color: kRed,
                   borderRadius: BorderRadius.circular(20),

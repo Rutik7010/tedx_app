@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:tedx_app/constants.dart';
 import 'package:tedx_app/models/Speaker.dart';
+import 'package:tedx_app/widgets/SliverAppBar.dart';
 
 class SpeakerInfoPage extends StatefulWidget {
   final Speaker speaker;
@@ -21,16 +22,7 @@ class _SpeakerInfoPageState extends State<SpeakerInfoPage> {
           color: kGrey,
           child: CustomScrollView(
             slivers: [
-              SliverAppBar(
-                title: Text(
-                  widget.speaker.name,
-                  overflow: TextOverflow.ellipsis,
-                  style: kAppBarStyle,
-                ),
-                floating: true,
-                pinned: false,
-                backgroundColor: kGrey.withOpacity(0.5),
-              ),
+              SAppBar(title: widget.speaker.name),
               SliverToBoxAdapter(
                 child: Container(
                   decoration: BoxDecoration(
@@ -60,7 +52,7 @@ class _SpeakerInfoPageState extends State<SpeakerInfoPage> {
                     delegate: SliverChildListDelegate([
                   SizedBox(height: 10),
                   Text(
-                    widget.speaker.designation,
+                    widget.speaker.profession,
                     style: kHeadingStyle,
                   ),
                   SizedBox(height: 10),

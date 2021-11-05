@@ -9,7 +9,8 @@ class SAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       title: Text(
-        "Edx App",
+        title,
+        overflow: TextOverflow.ellipsis,
         style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w900),
       ),
       floating: true,

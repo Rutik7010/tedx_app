@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:tedx_app/constants.dart';
 import 'package:tedx_app/models/Event.dart';
-import 'package:tedx_app/staticData.dart';
 
 class EventBox extends StatelessWidget {
   final Event event;
@@ -60,7 +59,7 @@ class EventBox extends StatelessWidget {
               style: TextStyle(
                   color: Colors.white,
                   fontFamily: 'Poppins',
-                  fontSize: 20,
+                  fontSize: 18,
                   fontWeight: FontWeight.w500),
             ),
           ),
@@ -72,7 +71,7 @@ class EventBox extends StatelessWidget {
               style: TextStyle(
                 color: Colors.white,
                 fontFamily: 'Poppins',
-                fontSize: 18,
+                fontSize: 15,
               ),
             ),
           ),

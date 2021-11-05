@@ -1,8 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:tedx_app/constants.dart';
 import 'package:tedx_app/screens/SpeakerInfoPage.dart';
 import 'package:tedx_app/staticData.dart';
+import 'package:tedx_app/widgets/SliverAppBar.dart';
 import 'package:tedx_app/widgets/SpeakerBox.dart';
 
 class SpeakersPage extends StatefulWidget {
@@ -21,24 +21,18 @@ class _SpeakersPageState extends State<SpeakersPage> {
         color: kGrey,
         child: CustomScrollView(
           slivers: [
-            SliverAppBar(
-              title: Text(
-                "Edx App",
-                style: TextStyle(
-                    fontFamily: 'Poppins', fontWeight: FontWeight.w900),
-              ),
-              floating: true,
-              pinned: false,
-              backgroundColor: kGrey.withOpacity(0.5),
-            ),
+            SAppBar(title: 'Tedx RAIT'),
             SliverToBoxAdapter(
-              child: Text(
-                "Our Speakers",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 25,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w700,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Text(
+                  "Our Speakers",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
             ),
