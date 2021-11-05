@@ -50,7 +50,8 @@ class SpeakerBox extends StatelessWidget {
               children: [
                 Text(
                   speaker.name,
-                  style: kHeadingStyle.copyWith(fontSize: 22),
+                  style: kHeadingStyle.copyWith(
+                      fontSize: 20, fontWeight: FontWeight.w600),
                 ),
                 Text(
                   speaker.profession,

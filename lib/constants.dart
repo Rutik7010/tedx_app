@@ -50,7 +50,7 @@ TextStyle kHeadingStyle = TextStyle(
   color: Colors.white,
   fontSize: 25,
   fontFamily: 'Poppins',
-  fontWeight: FontWeight.w700,
+  fontWeight: FontWeight.w600,
 );
 TextStyle kSubheadingStyle = TextStyle(
   color: Colors.grey,
