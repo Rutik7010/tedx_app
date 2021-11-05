@@ -1,10 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:tedx_app/constants.dart';
 import 'package:tedx_app/models/Event.dart';
 import 'package:tedx_app/screens/SpeakerInfoPage.dart';
 import 'package:tedx_app/widgets/SliverAppBar.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class EventsInfoPage extends StatefulWidget {
   final Event event;
@@ -15,6 +17,13 @@ class EventsInfoPage extends StatefulWidget {
 }
 
 class _EventsInfoPageState extends State<EventsInfoPage> {
+  void _launchURL(String _url) async => await canLaunch(_url)
+      ? await launch(_url)
+      : showDialog(
+          context: context,
+          builder: (_) => CupertinoAlertDialog(
+                title: Text('Invalid Form Link'),
+              ));
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -58,6 +67,15 @@ class _EventsInfoPageState extends State<EventsInfoPage> {
                           style: kSubheadingStyle.copyWith(
                             fontWeight: FontWeight.w700,
                             color: kRed.withOpacity(0.8),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Total Seats: ${widget.event.totalSeats.toString()}",
+                          style: kSubheadingStyle.copyWith(
+                            fontWeight: FontWeight.w700,
                           ),
                         ),
                         SizedBox(
@@ -164,18 +182,21 @@ class _EventsInfoPageState extends State<EventsInfoPage> {
               bottom: 0,
               left: 0,
               right: 0,
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.symmetric(horizontal: 80, vertical: 40),
-                padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                decoration: BoxDecoration(
-                  color: kRed,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Text(
-                  "Book Now",
-                  textAlign: TextAlign.center,
-                  style: kHeadingStyle,
+              child: GestureDetector(
+                onTap: () => _launchURL(widget.event.formLink),
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  margin: EdgeInsets.symmetric(horizontal: 80, vertical: 40),
+                  padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                  decoration: BoxDecoration(
+                    color: kRed,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text(
+                    "Book Now",
+                    textAlign: TextAlign.center,
+                    style: kHeadingStyle,
+                  ),
                 ),
               ),
             )
