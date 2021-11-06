@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tedx_app/constants.dart';
+import 'package:tedx_app/helper/firebase_helper.dart';
+import 'package:tedx_app/models/Event.dart';
 import 'package:tedx_app/screens/EventInfoPage.dart';
 import 'package:tedx_app/staticData.dart';
 import 'package:tedx_app/widgets/EventBox.dart';
@@ -12,6 +14,22 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+
+  FirebaseHelper _firebaseHelper = new FirebaseHelper();
+
+  List<Event> eventlist = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _firebaseHelper.fetchAllEvent().then((list) => {
+        setState(() {
+          eventlist = list; 
+        })
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -55,21 +73,24 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            SliverList(
-              delegate:
-                  SliverChildBuilderDelegate((BuildContext context, int index) {
-                return GestureDetector(
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            EventsInfoPage(event: kUpcomingEventslist[index])),
-                  ),
-                  child: EventBox(
-                    event: kUpcomingEventslist[index],
-                  ),
-                );
-              }, childCount: kUpcomingEventslist.length),
+            eventlist.length == -1 ? 
+            Center(child: CircularProgressIndicator())
+            : SliverList(
+              delegate: SliverChildBuilderDelegate(
+                  (BuildContext cnt, int index) => GestureDetector(
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => EventsInfoPage(
+                              event: eventlist[index]
+                            ),
+                          ),
+                        ),
+                        child: EventBox(
+                          event: eventlist[index],
+                        ),
+                      ),
+                  childCount: eventlist.length),
             ),
           ],
         ),

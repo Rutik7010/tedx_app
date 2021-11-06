@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tedx_app/constants.dart';
+import 'package:tedx_app/helper/firebase_helper.dart';
+import 'package:tedx_app/models/Event.dart';
 import 'package:tedx_app/screens/EventInfoPage.dart';
 import 'package:tedx_app/staticData.dart';
 import 'package:tedx_app/widgets/EventBox.dart';
@@ -13,6 +15,21 @@ class EventsPage extends StatefulWidget {
 }
 
 class _EventsPageState extends State<EventsPage> {
+
+  FirebaseHelper _firebaseHelper = new FirebaseHelper();
+
+  List<Event> eventlist = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _firebaseHelper.fetchAllEvent().then((list) => {
+        setState(() {
+          eventlist = list; 
+        })
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -36,22 +53,24 @@ class _EventsPageState extends State<EventsPage> {
                 ),
               ),
             ),
-            SliverList(
+            eventlist.length == -1 ? 
+            Center(child: CircularProgressIndicator())
+            : SliverList(
               delegate: SliverChildBuilderDelegate(
                   (BuildContext cnt, int index) => GestureDetector(
                         onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => EventsInfoPage(
-                              event: kPreviousEvents[index]
+                              event: eventlist[index]
                             ),
                           ),
                         ),
                         child: EventBox(
-                          event: kPreviousEvents[index],
+                          event: eventlist[index],
                         ),
                       ),
-                  childCount: kSpeakersList.length),
+                  childCount: eventlist.length),
             ),
           ],
         ),
