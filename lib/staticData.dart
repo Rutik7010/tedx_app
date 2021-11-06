@@ -114,10 +114,11 @@ Speaker kSpeaker = Speaker(
         "We the People of the United States, in Order to form a more perfect Union, establish Justice, insure domestic Tranquility, provide for the common defense, promote the general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this Constitution for the United States of America.",
     imageUrl: "https://source.unsplash.com/user/c_v_r/1900x800");
 
-User kUser = User(
+UserM kUser = UserM(
     name: "Harsh Kulkarni",
     email: "harsh.kulkarni.42774@gmail.com",
-    phoneNo: 8888888888);
+    phoneNo: 8888888888, 
+    uId: 'uId');
 
 List<Speaker> kSpeakersList = [
   Speaker(

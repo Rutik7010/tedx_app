@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:tedx_app/constants.dart';
+import 'package:tedx_app/helper/auth_methods.dart';
 import 'package:tedx_app/screens/SignupPage.dart';
 import 'package:tedx_app/screens/TabView.dart';
 
@@ -13,6 +14,12 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
+  AuthMethods _authMethods = new AuthMethods();
+
+  TextEditingController textPasswordController=TextEditingController();
+  TextEditingController textEmailController=TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -40,6 +47,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: SizedBox(),
                 ),
                 TextFormField(
+                  controller: textEmailController,
                   decoration: getInputDecoration(
                       hintText: "Enter Email", icon: Icon(Icons.email)),
                   keyboardType: TextInputType.emailAddress,
@@ -48,6 +56,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: size.height * 0.03,
                 ),
                 TextFormField(
+                  controller: textPasswordController,
                   obscureText: true,
                   decoration: getInputDecoration(
                       hintText: "Enter Password", icon: Icon(Icons.lock)),
@@ -55,10 +64,14 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 Spacer(),
                 GestureDetector(
-                  onTap: () => Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => TabView()),
-                  ),
+                  onTap: () {
+                    _authMethods.handleSignInEmail(textEmailController.text, textPasswordController.text).then((value) => {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => TabView()),
+                        ),
+                    });
+                  },
                   child: Container(
                     decoration: BoxDecoration(
                         color: kRed,
