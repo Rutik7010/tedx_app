@@ -43,8 +43,7 @@ class _EventsPageState extends State<EventsPage> {
                           context,
                           MaterialPageRoute(
                             builder: (context) => EventsInfoPage(
-                              event: kPreviousEvents[index],
-                              isEventDone: true,
+                              event: kPreviousEvents[index]
                             ),
                           ),
                         ),

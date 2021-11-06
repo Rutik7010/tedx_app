@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "349494082687",
+    "project_id": "tedxdypatiluniversity-d735e",
+    "storage_bucket": "tedxdypatiluniversity-d735e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:349494082687:android:3d5186e6493da67533534a",
+        "android_client_info": {
+          "package_name": "com.example.tedx_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "349494082687-m3kms685q21uo4lqs4vd056mauq409g7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhmBfQ7X8KFzOl7PtdZpRUPkfMsMZsiME"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "349494082687-m3kms685q21uo4lqs4vd056mauq409g7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:349494082687:android:3c1b63569f2e071433534a",
+        "android_client_info": {
+          "package_name": "mrunalinigaikwad.tedxdypatiluniversity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "349494082687-m3kms685q21uo4lqs4vd056mauq409g7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhmBfQ7X8KFzOl7PtdZpRUPkfMsMZsiME"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "349494082687-m3kms685q21uo4lqs4vd056mauq409g7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

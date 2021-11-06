@@ -72,12 +72,12 @@ class _EventsInfoPageState extends State<EventsInfoPage> {
                         SizedBox(
                           height: 10,
                         ),
-                        Text(
-                          "Total Seats: ${widget.event.totalSeats.toString()}",
-                          style: kSubheadingStyle.copyWith(
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
+                        // Text(
+                        //   "Total Seats: ${widget.event.totalSeats.toString()}",
+                        //   style: kSubheadingStyle.copyWith(
+                        //     fontWeight: FontWeight.w700,
+                        //   ),
+                        // ),
                         SizedBox(
                           height: 10,
                         ),
