@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _firebaseHelper.fetchAllEvent().then((list) => {
+    _firebaseHelper.fetchUpcomingEvent().then((list) => {
         setState(() {
           eventlist = list; 
         })
@@ -82,7 +82,8 @@ class _HomePageState extends State<HomePage> {
                           context,
                           MaterialPageRoute(
                             builder: (context) => EventsInfoPage(
-                              event: eventlist[index]
+                              event: eventlist[index],
+                              isEventDone: false,
                             ),
                           ),
                         ),

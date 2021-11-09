@@ -17,7 +17,7 @@ class FirebaseHelper {
   static final DatabaseReference _eventCollection = _database.reference().child("Events");
   static final DatabaseReference _speakerCollection = _database.reference().child("Speakers");
 
-  // fetch all foods list from food reference
+  // fetch previous events list from food reference
   Future<List<event.Event>> fetchAllEvent() async {
     List<event.Event> eventList = <event.Event>[];
     await _eventCollection.once().then((DataSnapshot snap) {
@@ -30,6 +30,7 @@ class FirebaseHelper {
             formLink: data[individualKey]["formLink"], 
             bannerLink: data[individualKey]["bannerLink"], 
             eventName: data[individualKey]["eventName"],
+            isOpen: data[individualKey]["isOpen"],
             speaker: new Speaker(
               imageUrl: data[individualKey]["speaker"]["imageUrl"],
               info: data[individualKey]["speaker"]["info"],
@@ -37,13 +38,44 @@ class FirebaseHelper {
               name: data[individualKey]["speaker"]["name"],
               )
           );
-          eventList.add(eventData);
+          // add all closed events in list
+          if (!eventData.isOpen)
+            eventList.add(eventData);
         }
       });
       return eventList;
   }
 
-   // fetch all foods list from food reference
+  // fetch previous events list from food reference
+  Future<List<event.Event>> fetchUpcomingEvent() async {
+    List<event.Event> eventList = <event.Event>[];
+    await _eventCollection.once().then((DataSnapshot snap) {
+        var keys = snap.value.keys;
+        var data = snap.value;
+        eventList.clear();
+        for(var individualKey in keys){
+          event.Event eventData = new event.Event(
+            eventInfo: data[individualKey]["eventInfo"], 
+            formLink: data[individualKey]["formLink"], 
+            bannerLink: data[individualKey]["bannerLink"], 
+            eventName: data[individualKey]["eventName"],
+            isOpen: data[individualKey]["isOpen"],
+            speaker: new Speaker(
+              imageUrl: data[individualKey]["speaker"]["imageUrl"],
+              info: data[individualKey]["speaker"]["info"],
+              profession: data[individualKey]["speaker"]["profession"],
+              name: data[individualKey]["speaker"]["name"],
+              )
+          );
+          // add all open events in list
+          if (eventData.isOpen)
+            eventList.add(eventData);
+        }
+      });
+      return eventList;
+  }
+
+   // fetch all speaker list from food reference
   Future<List<Speaker>> fetchAllSpeaker() async {
     List<Speaker> speakerList = <Speaker>[];
     await _speakerCollection.once().then((DataSnapshot snap) {
