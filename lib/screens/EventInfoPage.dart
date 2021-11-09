@@ -62,22 +62,22 @@ class _EventsInfoPageState extends State<EventsInfoPage> {
                         SizedBox(
                           height: 10,
                         ),
-                        Text(
-                          " ${widget.event.dateTime.day} ${kMonths[widget.event.dateTime.month]} ${widget.event.dateTime.year}  \n ${widget.event.dateTime.hour}:${widget.event.dateTime.minute}",
-                          style: kSubheadingStyle.copyWith(
-                            fontWeight: FontWeight.w700,
-                            color: kRed.withOpacity(0.8),
-                          ),
-                        ),
+                        // Text(
+                        //   " ${widget.event.dateTime.day} ${kMonths[widget.event.dateTime.month]} ${widget.event.dateTime.year}  \n ${widget.event.dateTime.hour}:${widget.event.dateTime.minute}",
+                        //   style: kSubheadingStyle.copyWith(
+                        //     fontWeight: FontWeight.w700,
+                        //     color: kRed.withOpacity(0.8),
+                        //   ),
+                        // ),
                         SizedBox(
                           height: 10,
                         ),
-                        Text(
-                          "Total Seats: ${widget.event.totalSeats.toString()}",
-                          style: kSubheadingStyle.copyWith(
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
+                        // Text(
+                        //   "Total Seats: ${widget.event.totalSeats.toString()}",
+                        //   style: kSubheadingStyle.copyWith(
+                        //     fontWeight: FontWeight.w700,
+                        //   ),
+                        // ),
                         SizedBox(
                           height: 10,
                         ),

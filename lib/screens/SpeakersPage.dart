@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tedx_app/constants.dart';
+import 'package:tedx_app/helper/firebase_helper.dart';
+import 'package:tedx_app/models/Speaker.dart';
 import 'package:tedx_app/screens/SpeakerInfoPage.dart';
 import 'package:tedx_app/staticData.dart';
 import 'package:tedx_app/widgets/SliverAppBar.dart';
@@ -13,6 +15,21 @@ class SpeakersPage extends StatefulWidget {
 }
 
 class _SpeakersPageState extends State<SpeakersPage> {
+
+  FirebaseHelper _firebaseHelper = new FirebaseHelper();
+
+  List<Speaker> speakerList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _firebaseHelper.fetchAllSpeaker().then((list) => {
+        setState(() {
+          speakerList = list; 
+        })
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -36,19 +53,21 @@ class _SpeakersPageState extends State<SpeakersPage> {
                 ),
               ),
             ),
-            SliverList(
+            speakerList.length == -1 ? 
+            Center(child: CircularProgressIndicator())
+            : SliverList(
               delegate: SliverChildBuilderDelegate(
                   (BuildContext cnt, int index) => GestureDetector(
                         onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => SpeakerInfoPage(
-                                    speaker: kSpeakersList[index]))),
+                                    speaker: speakerList[index]))),
                         child: SpeakerBox(
-                          speaker: kSpeakersList[index],
+                          speaker: speakerList[index],
                         ),
                       ),
-                  childCount: kSpeakersList.length),
+                  childCount: speakerList.length),
             )
           ],
         ),

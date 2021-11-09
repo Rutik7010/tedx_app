@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:tedx_app/constants.dart';
+import 'package:tedx_app/helper/auth_methods.dart';
 import 'package:tedx_app/screens/LoginPage.dart';
 import 'package:tedx_app/screens/TabView.dart';
 
@@ -13,6 +14,13 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
+
+  AuthMethods _authMethods = new AuthMethods();
+
+  TextEditingController textNameController=TextEditingController();
+  TextEditingController textPasswordController=TextEditingController();
+  TextEditingController textEmailController=TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -40,6 +48,7 @@ class _SignupPageState extends State<SignupPage> {
                   child: SizedBox(),
                 ),
                 TextFormField(
+                  controller: textNameController,
                   decoration: getInputDecoration(
                     hintText: "Enter Name",
                     icon: Icon(Icons.person),
@@ -50,6 +59,7 @@ class _SignupPageState extends State<SignupPage> {
                   height: size.height * 0.03,
                 ),
                 TextFormField(
+                  controller: textEmailController,
                   decoration: getInputDecoration(
                     hintText: "Enter Email",
                     icon: Icon(Icons.email),
@@ -60,6 +70,7 @@ class _SignupPageState extends State<SignupPage> {
                   height: size.height * 0.03,
                 ),
                 TextFormField(
+                  controller: textPasswordController,
                   obscureText: true,
                   decoration: getInputDecoration(
                     hintText: "Enter Password",
@@ -69,10 +80,14 @@ class _SignupPageState extends State<SignupPage> {
                 ),
                 Spacer(),
                 GestureDetector(
-                  onTap: () => Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => TabView()),
-                  ),
+                  onTap: () {
+                    _authMethods.handleSignUp(textNameController.text, textEmailController.text, textPasswordController.text).then((value) => {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => TabView()),
+                          ),
+                    });
+                  },
                   child: Container(
                     decoration: BoxDecoration(
                         color: kRed,
